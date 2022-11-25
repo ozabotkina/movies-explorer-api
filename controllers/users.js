@@ -8,7 +8,8 @@ const NotAuthorized = require('../utils/errors/NotAuthorized');
 const NotFound = require('../utils/errors/NotFound');
 const Conflict = require('../utils/errors/Conflict');
 
-// const { JWT_SECRET, NODE_ENV } = process.env;
+const { JWT_SECRET, NODE_ENV } = process.env;
+const { DEV_SECRET } = require('../utils/dev_config');
 
 module.exports.createUser = (req, res, next) => {
   bcrypt.hash(req.body.password, 10)
@@ -71,12 +72,8 @@ module.exports.login = (req, res, next) => {
         });
     })
     .then((user) => {
-      const secretCode = 'dev-secret';
-
-      //  NODE_ENV === 'production' ? JWT_SECRET :
-
+      const secretCode = NODE_ENV === 'production' ? JWT_SECRET : DEV_SECRET;
       const token = jwt.sign({ _id: user._id }, secretCode);
-      // res.send({ token });
       res.cookie('jwt', token, {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
@@ -87,12 +84,13 @@ module.exports.login = (req, res, next) => {
     .catch(next);
 };
 
-// нужен трай кэтч?
-module.exports.signout = (req, res) => {
-  res.cookie('jwt', '', {
-    maxAge: 3600000 * 24 * 7,
-    httpOnly: true,
-    secure: true,
-    sameSite: 'none',
-  }).send({ message: 'токен удален' });
+module.exports.signout = (req, res, next) => {
+  try {
+    res.cookie('jwt', '', {
+      maxAge: 3600000 * 24 * 7,
+      httpOnly: true,
+      secure: true,
+      sameSite: 'none',
+    }).send({ message: 'токен удален' });
+  } catch (err) { next(err); }
 };

@@ -1,7 +1,5 @@
 const Movie = require('../models/movie');
 const BadRequest = require('../utils/errors/BadRequest');
-// const Conflict = require('../utils/errors/Conflict');
-// const NotAuthorized = require('../utils/errors/NotAuthorized');
 const NotFound = require('../utils/errors/NotFound');
 const Prohibited = require('../utils/errors/Prohibited');
 

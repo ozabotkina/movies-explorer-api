@@ -2,7 +2,8 @@ require('dotenv').config();
 
 const jwt = require('jsonwebtoken');
 
-// const { JWT_SECRET, NODE_ENV } = process.env;
+const { JWT_SECRET, NODE_ENV } = process.env;
+const { DEV_SECRET } = require('../utils/devenv');
 
 const NotAuthorized = require('../utils/errors/NotAuthorized');
 const Prohibited = require('../utils/errors/Prohibited');
@@ -15,9 +16,7 @@ const tokenAuth = (req, res, next) => {
     if (!token) {
       throw new NotAuthorized();
     }
-    // let payload;
-    const payload = jwt.verify(token, 'dev-secret');
-    // NODE_ENV === 'production' ? JWT_SECRET :
+    const payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : DEV_SECRET);
     User.findOne({ _id: payload._id })
       .then((user) => {
         if (!user) { throw new Prohibited(); }

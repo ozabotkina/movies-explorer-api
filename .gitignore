@@ -2,16 +2,13 @@
 logs
 *.log
 npm-debug.log*
-npm 
+npm
 .npm
 .env
 *.env
 **/.env
 **.env
-./backend/.env
-./backend/envtest.js
 *env
-react-mesto-api-full/backend/.env
 
 # Optional REPL history
 .DS_Store
@@ -23,10 +20,6 @@ react-mesto-api-full/backend/.env
 node_modules
 **/.pnp
 .pnp.js
-/backend/.env
-backend/.env
-./backend/.env
-**/backend/.env
 env
 .env
 **/.env
@@ -36,8 +29,6 @@ env
 **/build/
 
 # misc
-backend/.env
-**/backend/.env
 env
 .env
 **/.env
