@@ -3,7 +3,7 @@ require('dotenv').config();
 const jwt = require('jsonwebtoken');
 
 const { JWT_SECRET, NODE_ENV } = process.env;
-const { DEV_SECRET } = require('../utils/devenv');
+const { DEV_SECRET } = require('../utils/dev_config');
 
 const NotAuthorized = require('../utils/errors/NotAuthorized');
 const Prohibited = require('../utils/errors/Prohibited');

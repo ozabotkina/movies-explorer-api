@@ -7,7 +7,7 @@ const { errors } = require('celebrate');
 const routers = require('./routes/index');
 const cors = require('./middlewares/cors');
 const { requestLogger, errorLogger } = require('./middlewares/loggers');
-const { localDatabase } = require('./utils/devenv');
+const { localDatabase } = require('./utils/dev_config');
 
 const { PORT = 3000, NODE_ENV, DB_PRODUCTION } = process.env;
 
