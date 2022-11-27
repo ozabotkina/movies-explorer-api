@@ -23,7 +23,8 @@ const tokenAuth = (req, res, next) => {
       });
     req.user = { _id: payload };
   } catch (err) {
-    next(new NotAuthorized());
+    // next(new NotAuthorized());
+    throw new NotAuthorized();
   }
   next();
 };

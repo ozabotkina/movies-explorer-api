@@ -1,7 +1,6 @@
 module.exports = class Prohibited extends Error {
   constructor() {
-    super();
+    super('Запрещенный ресурс');
     this.statusCode = 403;
-    this.message = 'Запрещенный ресурс';
   }
 };

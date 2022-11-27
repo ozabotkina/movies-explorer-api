@@ -84,13 +84,20 @@ module.exports.login = (req, res, next) => {
     .catch(next);
 };
 
-module.exports.signout = (req, res, next) => {
-  try {
-    res.cookie('jwt', '', {
-      maxAge: 3600000 * 24 * 7,
-      httpOnly: true,
-      secure: true,
-      sameSite: 'none',
-    }).send({ message: 'токен удален' });
-  } catch (err) { next(err); }
+module.exports.signout = (req, res) => {
+  // try {
+  // res.cookie('jwt', '', {
+  //   maxAge: 3600000 * 24 * 7,
+  //   httpOnly: true,
+  //   secure: true,
+  //   sameSite: 'none',
+  // })
+  res.clearCookie('jwt', {
+    maxAge: 3600000 * 24 * 7,
+    httpOnly: true,
+    secure: true,
+    sameSite: 'none',
+  })
+    .send({ message: 'токен удален' });
+  // } catch (err) { next(err); }
 };

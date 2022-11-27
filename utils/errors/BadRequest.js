@@ -1,7 +1,6 @@
 module.exports = class BadRequest extends Error {
   constructor() {
-    super();
+    super('Ошибка в запросе');
     this.statusCode = 400;
-    this.message = 'Ошибка в запросе';
   }
 };

@@ -1,7 +1,6 @@
 module.exports = class Conflict extends Error {
   constructor() {
-    super();
+    super('Такая запись уже есть');
     this.statusCode = 409;
-    this.message = 'Такая запись уже есть';
   }
 };

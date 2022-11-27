@@ -12,7 +12,7 @@
         }
      ],
      "no-useless-escape":[
-       "warn"
+       "off"
      ]
   },
   "root":true

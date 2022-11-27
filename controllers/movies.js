@@ -56,7 +56,8 @@ module.exports.deleteMovie = (req, res, next) => {
     })
     .then((movie) => {
       Movie.deleteOne({ _id: movie._id })
-        .then((result) => res.send(result));
+        .then((result) => res.send(result))
+        .catch(next);
     })
     .catch((err) => {
       if (err.name === 'CastError') { return next(new BadRequest()); }

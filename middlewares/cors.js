@@ -3,9 +3,9 @@ const allowedCors = [
   'localhost:3001',
   'http://localhost:3000',
   'http://localhost:3001',
-  'ozabotkina.nomoredomains.icu',
-  'http://ozabotkina.nomoredomains.icu',
-  'https://ozabotkina.nomoredomains.icu',
+  'ozdiploma.nomoredomains.club',
+  'http://ozdiploma.nomoredomains.club',
+  'https://ozdiploma.nomoredomains.club',
 ];
 
 const cors = (req, res, next) => {
