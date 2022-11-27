@@ -56,6 +56,7 @@ module.exports.updateUser = (req, res, next) => {
     .catch((err) => {
       if (err.name === 'ValidationError') { return next(new BadRequest()); }
       if (err.name === 'CastError') { return next(new BadRequest()); }
+      if (err.code === 11000) { return next(new Conflict()); }
       return next(err);
     });
 };
