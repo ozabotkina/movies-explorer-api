@@ -1,8 +1,12 @@
 const allowedCors = [
   'localhost:3000',
   'localhost:3001',
+  'localhost:3002',
+
   'http://localhost:3000',
   'http://localhost:3001',
+  'http://localhost:3002',
+
   'ozdiploma.nomoredomains.club',
   'http://ozdiploma.nomoredomains.club',
   'https://ozdiploma.nomoredomains.club',
@@ -21,11 +25,10 @@ const cors = (req, res, next) => {
     res.header('Access-Control-Allow-Methods', DEFAULT_ALLOWED_METHODS);
     res.header('Access-Control-Allow-Headers', requestHeaders);
     res.header('Access-Control-Allow-Credentials', true);
-    // return res.end();
+    return res.end();
   }
   res.header('Access-Control-Allow-Credentials', true);
-
-  next();
+  return next();
 };
 
 module.exports = cors;
